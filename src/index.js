@@ -2,6 +2,33 @@ import './index.scss'
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // toggle modal
+  const modal = document.querySelector('.modal')
+  const modal_btn = document.querySelector('.modal-btn')
+
+  function showModal() {
+    modal.classList.add('open')
+  }
+
+  function hideModal() {
+    modal.classList.remove('open')
+  }
+
+  modal_btn.addEventListener('click', function() {
+    showModal()
+  })
+
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.modal') === null && e.target !== modal_btn) {
+      hideModal()
+    }
+  })
+
+  const close_modal_btn = document.querySelector('.modal__close-btn')
+  close_modal_btn.addEventListener('click', function() {
+    hideModal()
+  })
+
   // active box
   const currency_result = document.querySelector('.currency-result')
   const payment_items = [...document.querySelectorAll('.modal__payments-item')]
